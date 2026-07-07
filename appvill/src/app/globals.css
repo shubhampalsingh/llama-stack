@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* AppVill — modern studio: paper white, ink black, signal orange. Big type, no fluff. */
+:root {
+  --background: #f7f6f3;
+  --surface: #ffffff;
+  --ink: #111110;
+  --muted: #6d6a63;
+  --line: #e0ddd4;
+  --signal: #ff4d00; /* signal orange */
+  --signal-deep: #d63f00;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
+  --font-display: "Archivo", "Arial Black", ui-sans-serif, sans-serif;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Marquee strip */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+
+/* Hover slide for work rows */
+.work-row {
+  transition: background 0.15s ease, padding-left 0.2s ease;
+}
+.work-row:hover {
+  background: var(--surface);
+  padding-left: 1.25rem;
+}
+
+.tick {
+  color: var(--signal);
+}
