@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------- Auth.js (NextAuth v5) ----------
+
+model User {
+  id               String    @id @default(cuid())
+  name             String?
+  email            String    @unique
+  emailVerified    DateTime?
+  image            String?
+  stripeCustomerId String?   @unique
+
+  accounts      Account[]
+  sessions      Session[]
+  apiKey        ApiKey?
+  deadlines     Deadline[]
+  subscriptions PushSubscription[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// User's Anthropic API key (for the AI Drill Sergeant), AES-256-GCM encrypted.
+model ApiKey {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  ciphertext String
+  keyHint    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ---------- DeadLimit ----------
+
+enum DeadlineStatus {
+  ALIVE // counting down
+  SURVIVED // completed before the due date
+  MISSED // the reaper collected
+}
+
+enum StakeStatus {
+  NONE
+  ARMED // card saved, will be charged on miss
+  COLLECTED // charged after a miss
+  CHARGE_FAILED
+}
+
+model Deadline {
+  id          String         @id @default(cuid())
+  userId      String
+  title       String
+  description String         @default("")
+  dueAt       DateTime
+  status      DeadlineStatus @default(ALIVE)
+
+  publicSlug String? @unique // set when witnesses are enabled
+
+  stakeAmountCents Int         @default(0)
+  stakeStatus      StakeStatus @default(NONE)
+  paymentMethodId  String? // saved Stripe payment method for the stake
+  stripeIntentId   String? // PaymentIntent id once collected
+
+  completedAt DateTime?
+  missedAt    DateTime?
+
+  reminders ReminderSent[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([status, dueAt])
+}
+
+// Log of reminder tiers already delivered, so the cron never double-sends.
+model ReminderSent {
+  id         String   @id @default(cuid())
+  deadlineId String
+  tier       String // e.g. "7d", "3d", "1d", "12h", "3h", "1h", "death"
+  sentAt     DateTime @default(now())
+
+  deadline Deadline @relation(fields: [deadlineId], references: [id], onDelete: Cascade)
+
+  @@unique([deadlineId, tier])
+}
+
+// Web Push subscription (one row per browser/device).
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
