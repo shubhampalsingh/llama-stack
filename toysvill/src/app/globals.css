@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* ToysVill — cheery toy shop: cream, cherry red, sky blue, sunshine yellow */
+:root {
+  --background: #fff9ef;
+  --surface: #ffffff;
+  --surface-2: #fdf1dc;
+  --border: #eadfc8;
+  --foreground: #33302b;
+  --muted: #8a8272;
+  --cherry: #e0493f;
+  --cherry-deep: #bb352c;
+  --sky: #4f9dd9;
+  --sky-deep: #3a7fb5;
+  --sunshine: #f7b731;
+  --grass: #58a35c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-dim: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-cherry: var(--cherry);
+  --color-cherry-deep: var(--cherry-deep);
+  --color-sky: var(--sky);
+  --color-sky-deep: var(--sky-deep);
+  --color-sunshine: var(--sunshine);
+  --color-grass: var(--grass);
+  --font-display: "Baloo 2", "Comic Sans MS", ui-rounded, sans-serif;
+  --font-sans: "Nunito", ui-rounded, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.toy-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.toy-card:hover {
+  transform: translateY(-3px) rotate(-0.4deg);
+  border-color: var(--sky);
+  box-shadow: 0 8px 20px rgba(51, 48, 43, 0.1);
+}
+
+.toy-btn {
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+.toy-btn:hover:not(:disabled) {
+  transform: scale(1.03);
+}
+.toy-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.toy-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.bounce-slow { animation: bounce-slow 2.4s ease-in-out infinite; }
+
+/* Scalloped awning stripe for the shop header */
+.awning {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cherry) 0 28px,
+    #fff 28px 56px
+  );
+  height: 10px;
+}
