@@ -148,6 +148,32 @@ model Reflection {
   @@index([studyId, createdAt])
 }
 
+// ---------- Mobile app auth (bearer tokens for the iOS app) ----------
+
+// Short-lived 6-digit sign-in codes emailed to the user.
+model MobileAuthCode {
+  id       String   @id @default(cuid())
+  email    String
+  codeHash String
+  expires  DateTime
+  attempts Int      @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}
+
+// Long-lived bearer tokens held by the mobile app (hash stored, never the token).
+model MobileToken {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  expires   DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
 // Progress on a static reading plan (plans defined in src/data/plans.ts).
 model ReadingProgress {
   id          String   @id @default(cuid())
