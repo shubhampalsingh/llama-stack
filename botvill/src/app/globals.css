@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* BotVill — friendly robot workshop: cool white, indigo, mint circuitry */
+:root {
+  --background: #f4f5fb;
+  --surface: #ffffff;
+  --surface-2: #e9ebf7;
+  --border: #d6d9ea;
+  --foreground: #26283a;
+  --muted: #71748e;
+  --indigo: #5a67d8;
+  --indigo-deep: #4552b8;
+  --mint: #2fbf8f;
+  --mint-deep: #239973;
+  --amber: #e8a23d;
+  --red: #d9534f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-dim: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-bv-indigo: var(--indigo);
+  --color-bv-indigo-deep: var(--indigo-deep);
+  --color-bv-mint: var(--mint);
+  --color-bv-mint-deep: var(--mint-deep);
+  --color-bv-amber: var(--amber);
+  --color-bv-red: var(--red);
+  --font-display: "Quicksand", ui-rounded, ui-sans-serif, sans-serif;
+  --font-sans: "Quicksand", ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.bv-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(38, 40, 58, 0.05);
+}
+
+.bv-card-hover {
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.bv-card-hover:hover {
+  border-color: var(--indigo);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(38, 40, 58, 0.1);
+}
+
+/* Antenna bobble on the mascot */
+@keyframes antenna {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+.antenna { animation: antenna 2s ease-in-out infinite; display: inline-block; }
+
+/* Subtle circuit dots background for hero */
+.circuits {
+  background-image: radial-gradient(rgba(90, 103, 216, 0.14) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
