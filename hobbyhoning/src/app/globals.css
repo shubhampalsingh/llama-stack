@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* HobbyHoning — craft workshop: cream paper, walnut, moss green, amber */
+:root {
+  --background: #faf5ea;
+  --surface: #fffcf4;
+  --surface-2: #f1e9d7;
+  --border: #ddd2ba;
+  --foreground: #3d2f22; /* walnut ink */
+  --muted: #83745f;
+  --moss: #5d7a4e;
+  --moss-deep: #46603a;
+  --amber: #d99a2b;
+  --amber-deep: #b57d18;
+  --clay: #b8623c;
+  --red: #b34747;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-dim: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-amber: var(--amber);
+  --color-amber-deep: var(--amber-deep);
+  --color-clay: var(--clay);
+  --color-hh-red: var(--red);
+  --font-display: "Lora", Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.hh-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(61, 47, 34, 0.05);
+}
+
+.hh-card-hover {
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hh-card-hover:hover {
+  border-color: var(--moss);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(61, 47, 34, 0.1);
+}
+
+/* Woodgrain-ish header texture */
+.woodgrain {
+  background-image: repeating-linear-gradient(
+    92deg,
+    rgba(61, 47, 34, 0.04) 0px,
+    rgba(61, 47, 34, 0.04) 2px,
+    transparent 2px,
+    transparent 9px
+  );
+}
+
+/* XP progress bar */
+.xp-track {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.xp-fill {
+  background: linear-gradient(90deg, var(--moss), var(--amber));
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
