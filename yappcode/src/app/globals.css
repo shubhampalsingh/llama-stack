@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* YappCode — playful neo-brutalist: warm paper, chunky ink borders, punchy accents */
+:root {
+  --background: #fdf8ef; /* warm paper */
+  --surface: #ffffff;
+  --ink: #16130d;
+  --muted: #6f6858;
+  --yellow: #ffd23f;
+  --pink: #ff70a6;
+  --green: #29c46f;
+  --blue: #4f9df7;
+  --red: #ef4444;
+  --shadow: 4px 4px 0 0 var(--ink);
+  --shadow-sm: 2px 2px 0 0 var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-yap-yellow: var(--yellow);
+  --color-yap-pink: var(--pink);
+  --color-yap-green: var(--green);
+  --color-yap-blue: var(--blue);
+  --color-yap-red: var(--red);
+  --font-sans: "Nunito", ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Chunky bordered card */
+.yap-card {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.yap-btn {
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  font-weight: 800;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.yap-btn:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 0 var(--ink);
+}
+.yap-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--ink);
+}
+.yap-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.yap-input {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  outline: none;
+}
+.yap-input:focus {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Wiggle for the mascot / fun bits */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.wiggle { animation: wiggle 1s ease-in-out infinite; }
+
+/* Typing dots */
+@keyframes yapdot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.yapdot { animation: yapdot 1.2s infinite; display: inline-block; }
+.yapdot:nth-child(2) { animation-delay: 0.15s; }
+.yapdot:nth-child(3) { animation-delay: 0.3s; }
