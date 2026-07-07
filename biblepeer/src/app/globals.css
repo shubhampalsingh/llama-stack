@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* BiblePeer — quiet study room: parchment, deep lake blue, soft gold */
+:root {
+  --background: #faf7f0;
+  --surface: #fffdf8;
+  --surface-2: #f1ecdf;
+  --border: #e0d9c6;
+  --foreground: #2a3140; /* deep slate-blue ink */
+  --muted: #7c7a6e;
+  --lake: #34557f;
+  --lake-deep: #263f5f;
+  --gold: #b08d3e;
+  --gold-soft: #d4b877;
+  --olive: #6e7f52;
+  --bp-red: #b04a4a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-dim: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-lake: var(--lake);
+  --color-lake-deep: var(--lake-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-olive: var(--olive);
+  --color-bp-red: var(--bp-red);
+  --font-display: "EB Garamond", Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.bp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(42, 49, 64, 0.05);
+}
+
+.bp-card-hover {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.bp-card-hover:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 14px rgba(42, 49, 64, 0.08);
+}
+
+/* Scripture block */
+.scripture {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+.scripture .verse-num {
+  color: var(--gold);
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-right: 0.15em;
+  font-weight: 600;
+}
+
+/* Gold rule ornament */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--gold);
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
