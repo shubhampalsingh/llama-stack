@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* StartupVill — village market: warm parchment, forest green, terracotta */
+:root {
+  --background: #f6f2e7; /* parchment */
+  --surface: #fffdf7;
+  --surface-2: #efe9d9;
+  --border: #d8d0bc;
+  --foreground: #22301f; /* pine ink */
+  --muted: #6f7565;
+  --green: #2f7d4f;
+  --green-deep: #1f5c38;
+  --terra: #d96f32;
+  --terra-deep: #b5561f;
+  --sky: #4f8fc0;
+  --gold: #c99a2e;
+  --red: #c04343;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-dim: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-vill-green: var(--green);
+  --color-vill-green-deep: var(--green-deep);
+  --color-vill-terra: var(--terra);
+  --color-vill-terra-deep: var(--terra-deep);
+  --color-vill-sky: var(--sky);
+  --color-vill-gold: var(--gold);
+  --color-vill-red: var(--red);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.vill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(34, 48, 31, 0.06);
+}
+
+.vill-card-hover {
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.vill-card-hover:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(34, 48, 31, 0.1);
+}
+
+/* Bunting flags for the weekly market header */
+.bunting {
+  background-image: linear-gradient(45deg, transparent 50%, var(--background) 50%),
+    linear-gradient(-45deg, transparent 50%, var(--background) 50%);
+  background-size: 14px 10px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
