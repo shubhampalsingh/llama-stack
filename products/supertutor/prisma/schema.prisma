@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  gradeLevel    String?
+  xp            Int       @default(0)
+  streak        Int       @default(0)
+  lastActiveAt  DateTime?
+  createdAt     DateTime  @default(now())
+
+  accounts Account[]
+  sessions Session[]
+  chats    ChatSession[]
+  quizzes  Quiz[]
+  decks    Deck[]
+  usage    UsageDay[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model ChatSession {
+  id        String        @id @default(cuid())
+  userId    String
+  title     String        @default("New chat")
+  mode      String        @default("tutor") // "tutor" | "solve"
+  subject   String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  messages  ChatMessage[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, updatedAt])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  chatId    String
+  role      String // "user" | "assistant"
+  content   String   @db.Text
+  hasImage  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  chat ChatSession @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@index([chatId, createdAt])
+}
+
+model Quiz {
+  id         String        @id @default(cuid())
+  userId     String
+  topic      String
+  difficulty String        @default("medium")
+  questions  Json
+  createdAt  DateTime      @default(now())
+  attempts   QuizAttempt[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  quizId    String
+  score     Int
+  total     Int
+  answers   Json
+  createdAt DateTime @default(now())
+
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
+
+model Deck {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  topic     String
+  createdAt DateTime @default(now())
+  cards     Card[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model Card {
+  id       String   @id @default(cuid())
+  deckId   String
+  front    String   @db.Text
+  back     String   @db.Text
+  ease     Float    @default(2.5)
+  interval Int      @default(0) // days
+  reps     Int      @default(0)
+  due      DateTime @default(now())
+
+  deck Deck @relation(fields: [deckId], references: [id], onDelete: Cascade)
+
+  @@index([deckId, due])
+}
+
+model UsageDay {
+  id           String @id @default(cuid())
+  userId       String
+  date         String // YYYY-MM-DD (UTC)
+  chatMessages Int    @default(0)
+  quizzes      Int    @default(0)
+  decks        Int    @default(0)
+  solves       Int    @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+}
