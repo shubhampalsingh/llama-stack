@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #faf6ef;
+  --color-ink: #26241f;
+  --color-clay: #cc785c;
+  --color-clay-deep: #a8532f;
+  --color-sage: #7d8b6f;
+  --color-parchment: #f2ead9;
+  --color-line: #e5dcc9;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-instrument), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+}
+
+.rule {
+  border-color: var(--color-line);
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(38, 36, 31, 0.05);
+}
+
+.btn {
+  background: var(--color-clay);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.btn:hover:not(:disabled) {
+  background: var(--color-clay-deep);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  border: 1.5px solid var(--color-clay);
+  color: var(--color-clay-deep);
+  border-radius: 9999px;
+  font-weight: 600;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.btn-ghost:hover {
+  background: rgba(204, 120, 92, 0.08);
+}
+
+.tag {
+  border: 1px solid var(--color-line);
+  background: var(--color-parchment);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.65rem;
+  color: #6b6353;
+}
+
+.prose-recipe {
+  line-height: 1.75;
+}
+.prose-recipe h2 {
+  font-size: 1.4rem;
+  margin: 1.75rem 0 0.6rem;
+}
+.prose-recipe h3 {
+  font-size: 1.15rem;
+  margin: 1.4rem 0 0.5rem;
+}
+.prose-recipe p {
+  margin: 0.75rem 0;
+}
+.prose-recipe ul, .prose-recipe ol {
+  margin: 0.75rem 0 0.75rem 1.4rem;
+}
+.prose-recipe ul { list-style: disc; }
+.prose-recipe ol { list-style: decimal; }
+.prose-recipe li { margin: 0.3rem 0; }
+.prose-recipe blockquote {
+  border-left: 3px solid var(--color-clay);
+  padding-left: 1rem;
+  font-style: italic;
+  color: #57503f;
+  margin: 1rem 0;
+}
+.prose-recipe code {
+  background: var(--color-parchment);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+.prose-recipe pre {
+  background: #2b2620;
+  color: #f3ede1;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.prose-recipe pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose-recipe a {
+  color: var(--color-clay-deep);
+  text-decoration: underline;
+}
+.prose-recipe hr {
+  border-color: var(--color-line);
+  margin: 1.5rem 0;
+}
+.prose-recipe strong { font-weight: 700; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.3s ease-out;
+}
