@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abyss: #0a0e14;
+  --color-glass: rgba(255, 255, 255, 0.045);
+  --color-frost: #e8eef7;
+  --color-dim: #8b98ab;
+  --color-cyan: #38e1d4;
+  --color-violet: #8b7cf6;
+  --color-amber: #f5b74c;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --font-display: var(--font-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-instrument), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-abyss);
+  background-image:
+    radial-gradient(900px 500px at 80% -10%, rgba(56, 225, 212, 0.07), transparent 65%),
+    radial-gradient(700px 500px at 0% 30%, rgba(139, 124, 246, 0.07), transparent 65%);
+  color: var(--color-frost);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #38e1d4, #8b7cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glassmorphism card — the house style */
+.glass {
+  background: var(--color-glass);
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.glass-hover {
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+.glass-hover:hover {
+  border-color: rgba(56, 225, 212, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+.btn {
+  background: linear-gradient(90deg, #38e1d4, #2fb9ae);
+  color: #06211e;
+  border-radius: 9999px;
+  font-weight: 800;
+  transition: filter 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 4px 24px rgba(56, 225, 212, 0.25);
+}
+.btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-ghost {
+  border: 1px solid rgba(56, 225, 212, 0.45);
+  color: var(--color-cyan);
+  border-radius: 9999px;
+  font-weight: 700;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.btn-ghost:hover { background: rgba(56, 225, 212, 0.1); }
+
+.tag {
+  border: 1px solid var(--color-line);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  color: var(--color-dim);
+}
+.tag-cyan {
+  border-color: rgba(56, 225, 212, 0.4);
+  color: var(--color-cyan);
+  background: rgba(56, 225, 212, 0.08);
+}
+
+.input-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-line);
+  color: var(--color-frost);
+  outline: none;
+  border-radius: 9999px;
+}
+.input-dark:focus { border-color: var(--color-cyan); }
+.input-dark::placeholder { color: #5d6a7d; }
+
+.score-ring {
+  font-family: var(--font-display);
+  font-weight: 800;
+  border: 2px solid var(--color-cyan);
+  color: var(--color-cyan);
+  border-radius: 9999px;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 0 20px rgba(56, 225, 212, 0.2);
+}
+
+.prose-guide { line-height: 1.75; }
+.prose-guide h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 1.8rem 0 0.6rem;
+  color: var(--color-cyan);
+}
+.prose-guide h3 { font-size: 1.1rem; margin: 1.3rem 0 0.4rem; }
+.prose-guide p { margin: 0.7rem 0; color: rgba(232, 238, 247, 0.88); }
+.prose-guide ul, .prose-guide ol { margin: 0.7rem 0 0.7rem 1.4rem; }
+.prose-guide ul { list-style: disc; }
+.prose-guide ol { list-style: decimal; }
+.prose-guide li { margin: 0.3rem 0; color: rgba(232, 238, 247, 0.88); }
+.prose-guide strong { color: var(--color-frost); font-weight: 700; }
+.prose-guide a { color: var(--color-cyan); text-decoration: underline; }
+.prose-guide code {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+.prose-guide table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+.prose-guide th, .prose-guide td {
+  border: 1px solid var(--color-line);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+}
+.prose-guide th { color: var(--color-cyan); font-weight: 700; }
+.prose-guide blockquote {
+  border-left: 3px solid var(--color-violet);
+  padding-left: 1rem;
+  color: var(--color-dim);
+  margin: 1rem 0;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.35s ease-out; }
