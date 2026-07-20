@@ -10,6 +10,7 @@ Seven products, one evening. The trick: **set up shared infrastructure once**, t
 | fiction | fiction.diy | ✅ | ✅ | ✅ |
 | alohomora | alohomora.club | ✅ | ✅ | ✅ |
 | smartglass | smartglass.games | ❌ | optional | ❌ |
+| superintelligence | superintelligence.works | ✅ | ✅ | ✅ |
 | aitoys-store | aitoys.fun | — | — | — (Shopify, separate track) |
 
 **Recommended order:** smartglass (10 min, zero credentials — momentum win) → supertutor → the rest.
@@ -27,7 +28,7 @@ Seven products, one evening. The trick: **set up shared infrastructure once**, t
 
 ### 0.2 One Neon project, six databases (10 min)
 1. https://neon.tech → sign up free → create project `domain-portfolio` (pick region close to your users, e.g. `ap-southeast-1` for India via Singapore).
-2. In the project, create databases: `supertutor`, `clauder`, `superschool`, `fiction`, `alohomora`, `smartglass`.
+2. In the project, create databases: `supertutor`, `clauder`, `superschool`, `fiction`, `alohomora`, `smartglass`, `superintelligence`.
 3. For each, copy the pooled connection string (the one with `-pooler` in the host); you'll paste one per Vercel project as `DATABASE_URL`.
 
 ### 0.3 One Google OAuth client for all apps (10 min)
@@ -40,6 +41,7 @@ Seven products, one evening. The trick: **set up shared infrastructure once**, t
    https://superschool.fun/api/auth/callback/google
    https://fiction.diy/api/auth/callback/google
    https://alohomora.club/api/auth/callback/google
+   https://superintelligence.works/api/auth/callback/google
    http://localhost:3000/api/auth/callback/google
    ```
    (Also add each project's `https://<project>.vercel.app/api/auth/callback/google` URL after first deploy if you want to test before DNS.)

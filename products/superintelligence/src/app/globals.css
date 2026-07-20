@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* Superintelligence Works — "clean pro light" design system.
+   Warm paper white, near-black ink, restrained lab-blue accent,
+   serif display (Newsreader) over a precise sans (Inter). */
+
+:root {
+  --paper: #fcfbf7;
+  --surface: #ffffff;
+  --ink: #1c1a15;
+  --muted: #6e695e;
+  --faint: #9b968a;
+  --line: #e8e4da;
+  --accent: #1a44c2;
+  --accent-deep: #142f8c;
+  --wash: #eef1fb;
+  --good: #1a7f4e;
+  --warn: #b26a00;
+  --bad: #b3261e;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-wash: var(--wash);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+}
+
+.font-display {
+  font-family: var(--font-newsreader), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.62rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--accent-deep);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.62rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.input::placeholder {
+  color: var(--faint);
+}
+
+/* Long-form article body */
+.prose-siw {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.prose-siw h2 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin: 2.2rem 0 0.8rem;
+  letter-spacing: -0.01em;
+}
+.prose-siw h3 {
+  font-size: 1.12rem;
+  font-weight: 650;
+  margin: 1.8rem 0 0.6rem;
+}
+.prose-siw p {
+  margin: 0.9rem 0;
+}
+.prose-siw ul,
+.prose-siw ol {
+  margin: 0.9rem 0;
+  padding-left: 1.4rem;
+}
+.prose-siw ul {
+  list-style: disc;
+}
+.prose-siw ol {
+  list-style: decimal;
+}
+.prose-siw li {
+  margin: 0.35rem 0;
+}
+.prose-siw strong {
+  font-weight: 650;
+}
+.prose-siw blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 1.2rem 0;
+}
+.prose-siw code {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.86em;
+  background: var(--wash);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+}
+.prose-siw a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-siw table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.prose-siw th,
+.prose-siw td {
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose-siw th {
+  background: var(--wash);
+  font-weight: 600;
+}
+
+/* Hairline rule with centered glyph, used as a section divider */
+.rule-glyph {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--faint);
+}
+.rule-glyph::before,
+.rule-glyph::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}

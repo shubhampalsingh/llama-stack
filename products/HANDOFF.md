@@ -18,6 +18,7 @@
 | aitoys.fun | `aitoys-store` | **Shopify store kit** (not a Next.js app): products.csv (13 placeholder AI-toy listings), collections plan, Parent Promise/About/homepage copy, STORE-GUIDE.md. Owner will claim a Shopify store and import. Placeholder inventory now; real dropship/wholesale sourcing later (Option 1). |
 | alohomora.club | `alohomora` | Hampton-style vetted business network ("the Unlock"): landing, 4-step application, AI screening notes, admin review desk (approve → auto profile, first 100 = Founding Members), unlock board with AI concierge matching against member directory, offers, directory. |
 | smartglass.games | `smartglass` | Editorial hub for gaming on AR glasses: 7 ranked devices (researched mid-2026: Viture Beast, XREAL One Pro, RayNeo Air 4 Pro…), device pages w/ compat notes, 5 setup guides, newsletter. Static SSG, no auth/AI. Affiliate-ready. |
+| superintelligence.works | (repo pending — code in monorepo `products/superintelligence`, branch `claude/build-assigned-domains-umn36w`) | **AI-lab company site** (owner's pivot: "a company like Anthropic and OpenAI"), brand "Superintelligence Works", clean pro light design (Newsreader serif + Inter, lab-blue accent). Research showcase: 6 original research notes, 3 LIVE demos (Deliberate Reasoning streaming, Steerable Generation w/ 3 dials, Constitution Lab structured-output verdicts), safety/about/news pages, careers w/ apply form → DB, newsletter, /admin inbox. Build+lint verified. |
 
 Also in the monorepo: `products/DEPLOYMENT.md` — the full go-live runbook (shared infra: one Anthropic key, one Neon project w/ per-app DBs, one Google OAuth client with all redirect URIs; per-app Vercel import; DNS records). **Deployment has NOT happened yet** — the owner will do Phase 0 themselves or hand over a Vercel token.
 
@@ -33,9 +34,9 @@ Healthy (build these, one at a time, owner picks the order):
 | yaar.fun | ← ORIGINAL SESSION. AI Hinglish best-friend chat proposed (iconic Yaar + moods, memory, vent mode w/ non-therapy boundaries + helpline pointers, shayari); questions never answered. |
 | jatt.club | ← ORIGINAL SESSION. No concept discussed. |
 | jatt.store | ← ORIGINAL SESSION. No concept discussed. |
-| superintelligence.works | ✅ THIS SESSION — start here. No concept discussed; ask. |
-| superintel.org | ⚠️ was in GRACE (expired Jul 5 2026) — confirm the owner renewed before building. Overlaps superintelligence.works; discuss split. |
-| addiction.monster + addictionmonster.app | Pair — likely one product (habit/recovery angle plausible). Ask which domain is primary. Sensitive topic: if it's recovery-related, include responsible non-medical boundaries like fiction/yaar patterns. |
+| ~~superintelligence.works~~ | ✅ DONE (this session, 2026-07-20) — see §1. |
+| superintel.org | ✅ RENEWED (owner confirmed 2026-07-20). Relationship to superintelligence.works = "decide later" (redirect vs. research-arm site). Don't build without asking. |
+| addiction.monster + addictionmonster.app | ← NEXT (owner picked 2026-07-20). Pair — likely one product (habit/recovery angle plausible). Ask which domain is primary. Sensitive topic: if it's recovery-related, include responsible non-medical boundaries like fiction/yaar patterns. |
 | aimodels.fun | No concept discussed (AI model directory/comparison plausible). |
 | cammy.app | No concept discussed. |
 | mltr.club | No concept discussed. |
