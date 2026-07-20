@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+
+  accounts Account[]
+  sessions Session[]
+  monsters Monster[]
+  usage    UsageDay[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Monster {
+  id               String    @id @default(cuid())
+  userId           String
+  name             String
+  addiction        String // preset id or custom label
+  emoji            String    @default("👾")
+  costPerDay       Float     @default(0)
+  currency         String    @default("INR")
+  why              String?   @db.Text
+  streakStart      DateTime  @default(now())
+  bestStreakDays   Int       @default(0)
+  relapseCount     Int       @default(0)
+  cravingsResisted Int       @default(0)
+  createdAt        DateTime  @default(now())
+  checkIns         CheckIn[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model CheckIn {
+  id        String   @id @default(cuid())
+  monsterId String
+  date      String // YYYY-MM-DD (UTC)
+  urge      Int // 0-10
+  mood      String
+  note      String?  @db.Text
+  reply     String?  @db.Text // short AI encouragement
+  createdAt DateTime @default(now())
+
+  monster Monster @relation(fields: [monsterId], references: [id], onDelete: Cascade)
+
+  @@unique([monsterId, date])
+  @@index([monsterId, createdAt])
+}
+
+model UsageDay {
+  id          String @id @default(cuid())
+  userId      String
+  date        String // YYYY-MM-DD (UTC)
+  sosMessages Int    @default(0)
+  checkins    Int    @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+}
