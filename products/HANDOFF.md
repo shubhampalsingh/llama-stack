@@ -27,11 +27,13 @@ Healthy (build these, one at a time, owner picks the order):
 
 | Domain | Prior discussion / direction (nothing locked) |
 |---|---|
-| theboys.app | Squad/get-the-boys-together plan-maker was proposed (RSVPs, date finder, AI plan generator, flake leaderboard, invite-link squads). Owner dismissed the spec questions — RE-ASK from scratch; don't assume. Avoid Amazon "The Boys" show branding. |
-| yaar.fun | AI Hinglish best-friend chat was proposed (iconic Yaar + moods, memory, vent mode w/ non-therapy boundaries + helpline pointers, shayari). Questions never answered — RE-ASK. |
-| jatt.club | No concept discussed. (Punjabi community angle plausible; ask.) |
-| jatt.store | No concept discussed. Possibly Shopify like aitoys. Ask. |
-| superintelligence.works | No concept discussed. |
+**SCOPE SPLIT (owner's decision):** the ORIGINAL session keeps **theboys.app, yaar.fun, jatt.club, jatt.store** — do NOT build those here. THIS (new) session owns everything from **superintelligence.works** down in the table below, plus the grace-period domains if renewed.
+
+| theboys.app | ← ORIGINAL SESSION. Squad/get-the-boys-together plan-maker was proposed (RSVPs, date finder, AI plan generator, flake leaderboard, invite-link squads); owner dismissed the spec questions, will re-ask there. Avoid Amazon "The Boys" show branding. |
+| yaar.fun | ← ORIGINAL SESSION. AI Hinglish best-friend chat proposed (iconic Yaar + moods, memory, vent mode w/ non-therapy boundaries + helpline pointers, shayari); questions never answered. |
+| jatt.club | ← ORIGINAL SESSION. No concept discussed. |
+| jatt.store | ← ORIGINAL SESSION. No concept discussed. |
+| superintelligence.works | ✅ THIS SESSION — start here. No concept discussed; ask. |
 | superintel.org | ⚠️ was in GRACE (expired Jul 5 2026) — confirm the owner renewed before building. Overlaps superintelligence.works; discuss split. |
 | addiction.monster + addictionmonster.app | Pair — likely one product (habit/recovery angle plausible). Ask which domain is primary. Sensitive topic: if it's recovery-related, include responsible non-medical boundaries like fiction/yaar patterns. |
 | aimodels.fun | No concept discussed (AI model directory/comparison plausible). |
