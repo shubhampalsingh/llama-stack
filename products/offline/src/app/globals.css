@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* offline.diy — "paper zine" design system.
+   Warm cream paper, near-black ink, rubber-stamp red, dashed rules,
+   Fraunces display over IBM Plex Mono labels. Feels photocopied with love. */
+
+:root {
+  --paper: #faf5ea;
+  --paper2: #f3ecdc;
+  --ink: #2b2820;
+  --muted: #6f695a;
+  --faint: #a49c88;
+  --line: #ddd3bd;
+  --stamp: #c4402f;
+  --leaf: #4d7c43;
+  --sky: #3a6ea5;
+  --sun: #d9911e;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper2: var(--paper2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-stamp: var(--stamp);
+  --color-leaf: var(--leaf);
+  --color-sky: var(--sky);
+  --color-sun: var(--sun);
+  --font-sans: var(--font-plex-sans);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.mono-label {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.card {
+  background: #fffdf6;
+  border: 1.5px solid var(--ink);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 0 var(--line);
+}
+
+.card-hover {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card-hover:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--line);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 3px 3px 0 var(--line);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--stamp);
+  border-color: var(--stamp);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--line);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.btn-ghost:hover {
+  color: var(--stamp);
+  border-color: var(--stamp);
+}
+
+.input {
+  width: 100%;
+  background: #fffdf6;
+  border: 1.5px solid var(--ink);
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.input:focus {
+  outline: 2px solid var(--stamp);
+  outline-offset: 1px;
+}
+.input::placeholder {
+  color: var(--faint);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1.5px solid var(--line);
+  background: #fffdf6;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.chip[data-active="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--stamp);
+  color: var(--stamp);
+  border-radius: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-2deg);
+}
+
+.rule-dashed {
+  border-top: 2px dashed var(--line);
+}
+
+/* Print styles for the Screen-Free Weekend Kit */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-page {
+    page-break-after: always;
+  }
+  .card {
+    box-shadow: none;
+  }
+}

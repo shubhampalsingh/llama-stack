@@ -23,6 +23,8 @@
 
 Also in the monorepo: `products/DEPLOYMENT.md` — the full go-live runbook (shared infra: one Anthropic key, one Neon project w/ per-app DBs, one Google OAuth client with all redirect URIs; per-app Vercel import; DNS records). **Deployment has NOT happened yet** — the owner will do Phase 0 themselves or hand over a Vercel token.
 
+**STATUS (2026-07-23, this session):** 4 shipped — superintelligence.works, addiction.monster (+.app), aimodels.fun, offline.diy. All in monorepo branch `claude/build-assigned-domains-umn36w`, each build+lint verified. **Remaining domains all need owner input before building** (AskUserQuestion prompts fail intermittently — retry once, then wait): sikhl.club (religious context — ask vision), cammy.app + mltr.club (no discernible concept), smartglass.fit (spinoff vs redirect), superintel.org (renewed; split undecided), grace-period renewals unconfirmed. Repos + PAT push + deployment still pending owner action.
+
 ## 2. Domains REMAINING to build
 
 Healthy (build these, one at a time, owner picks the order):
@@ -41,7 +43,7 @@ Healthy (build these, one at a time, owner picks the order):
 | ~~aimodels.fun~~ | ✅ DONE (this session, 2026-07-23; owner's question prompt failed repeatedly, so the recommended concept was built per standing "build one by one" instruction). "Candy tech" model directory: 23 researched models (Jul 2026) w/ plain-language cards, SSG detail pages, compare tool, AI Model Matchmaker (structured output, slug-constrained, 8/day cookie limit, no auth), newsletter. Code in `products/aimodels`. Build+lint verified. |
 | cammy.app | No concept discussed. |
 | mltr.club | No concept discussed. |
-| offline.diy | No concept discussed (digital-detox/offline activities plausible). |
+| ~~offline.diy~~ | ✅ DONE (this session, 2026-07-23; built on the handoff's plausible direction since question prompts kept failing). "Paper zine" field guide: 31 offline activities w/ filters + SSG pages, random dial, AI screen-free Planner (structured output, 6/day cookie limit, no auth), printable Screen-Free Weekend Kit (print CSS), newsletter. Code in `products/offline`. Build+lint verified. |
 | sikhl.club | No concept discussed. Religious/community context — be respectful, ask the owner's vision. |
 | smartglass.fit | Sibling of smartglass.games — a fitness-angle spinoff or redirect; ask. |
 

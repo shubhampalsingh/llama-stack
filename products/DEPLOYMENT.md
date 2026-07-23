@@ -13,6 +13,7 @@ Seven products, one evening. The trick: **set up shared infrastructure once**, t
 | superintelligence | superintelligence.works | ✅ | ✅ | ✅ |
 | addiction-monster | addiction.monster (+ addictionmonster.app → 301) | ✅ | ✅ | ✅ |
 | aimodels | aimodels.fun | ✅ | ✅ (newsletter only) | ❌ (no auth) |
+| offline | offline.diy | ✅ | ✅ (newsletter only) | ❌ (no auth) |
 | aitoys-store | aitoys.fun | — | — | — (Shopify, separate track) |
 
 **Recommended order:** smartglass (10 min, zero credentials — momentum win) → supertutor → the rest.
@@ -30,7 +31,7 @@ Seven products, one evening. The trick: **set up shared infrastructure once**, t
 
 ### 0.2 One Neon project, six databases (10 min)
 1. https://neon.tech → sign up free → create project `domain-portfolio` (pick region close to your users, e.g. `ap-southeast-1` for India via Singapore).
-2. In the project, create databases: `supertutor`, `clauder`, `superschool`, `fiction`, `alohomora`, `smartglass`, `superintelligence`, `addictionmonster`, `aimodels`.
+2. In the project, create databases: `supertutor`, `clauder`, `superschool`, `fiction`, `alohomora`, `smartglass`, `superintelligence`, `addictionmonster`, `aimodels`, `offline`.
 3. For each, copy the pooled connection string (the one with `-pooler` in the host); you'll paste one per Vercel project as `DATABASE_URL`.
 
 ### 0.3 One Google OAuth client for all apps (10 min)
