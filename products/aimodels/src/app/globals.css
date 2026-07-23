@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* aimodels.fun — "candy tech" design system.
+   Bright paper, vivid category colors, chunky rounded cards,
+   Space Grotesk display over DM Sans body. Fun on purpose. */
+
+:root {
+  --paper: #fffdf8;
+  --surface: #ffffff;
+  --ink: #201c2b;
+  --muted: #6b6580;
+  --faint: #a29bb8;
+  --line: #eae5f2;
+  --violet: #7c3aed;
+  --pink: #ec4899;
+  --green: #16a34a;
+  --orange: #ea580c;
+  --blue: #2563eb;
+  --yellow: #f59e0b;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-violet: var(--violet);
+  --color-pink: var(--pink);
+  --color-green: var(--green);
+  --color-orange: var(--orange);
+  --color-blue: var(--blue);
+  --color-yellow: var(--yellow);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 1.25rem;
+  transition: border-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgb(124 58 237 / 0.1);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.btn-primary:hover {
+  background: var(--violet);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--violet);
+  color: var(--violet);
+}
+
+.input {
+  width: 100%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 0.9rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--violet);
+}
+.input::placeholder {
+  color: var(--faint);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.chip:hover {
+  border-color: var(--violet);
+  color: var(--violet);
+}
+.chip[data-active="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.badge-hot { background: #fee2e2; color: #dc2626; }
+.badge-new { background: #dbeafe; color: #2563eb; }
+.badge-deprecated { background: #e5e7eb; color: #6b7280; }
+.badge-open { background: #dcfce7; color: #16a34a; }

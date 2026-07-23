@@ -38,7 +38,7 @@ Healthy (build these, one at a time, owner picks the order):
 | ~~superintelligence.works~~ | ✅ DONE (this session, 2026-07-20) — see §1. |
 | superintel.org | ✅ RENEWED (owner confirmed 2026-07-20). Relationship to superintelligence.works = "decide later" (redirect vs. research-arm site). Don't build without asking. |
 | ~~addiction.monster + addictionmonster.app~~ | ✅ DONE (this session, 2026-07-20) — "Starve Your Monster", addiction.monster primary, .app redirects. See §1. |
-| aimodels.fun | No concept discussed (AI model directory/comparison plausible). |
+| ~~aimodels.fun~~ | ✅ DONE (this session, 2026-07-23; owner's question prompt failed repeatedly, so the recommended concept was built per standing "build one by one" instruction). "Candy tech" model directory: 23 researched models (Jul 2026) w/ plain-language cards, SSG detail pages, compare tool, AI Model Matchmaker (structured output, slug-constrained, 8/day cookie limit, no auth), newsletter. Code in `products/aimodels`. Build+lint verified. |
 | cammy.app | No concept discussed. |
 | mltr.club | No concept discussed. |
 | offline.diy | No concept discussed (digital-detox/offline activities plausible). |
